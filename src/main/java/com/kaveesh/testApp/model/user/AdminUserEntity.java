@@ -1,6 +1,7 @@
 package com.kaveesh.testApp.model.user;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.kaveesh.testApp.dto.JSONObjectConverter;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -44,6 +45,7 @@ public class AdminUserEntity {
     private String contactNumber;
 
     @Column(name = "user_data")
+    @Convert(converter = JSONObjectConverter.class)
     private  JsonNode userData;
 
     @Column(name = "role")
