@@ -1,1 +1,4 @@
+com/kaveesh/testApp/dao/UserRepository.class
+com/kaveesh/testApp/model/user/AdminUserEntity.class
+com/kaveesh/testApp/dto/user/AdminUserDTO.class
 com/kaveesh/testApp/TestAppApplication.class
