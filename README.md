@@ -7,7 +7,7 @@ Pre-Requisites
 - JDK 1.8 or later
 - Maven 3.2+
 
-#### Starting with Spring Initializr
+### Starting with Spring Initializr
 
 1. Go to https://start.spring.io/
 2. Create a Maven Project with Jar Packaging.
@@ -15,9 +15,10 @@ Pre-Requisites
     - spring-boot-starter-data-jpa
     - lombok
     - mysql-connector-java
+    - spring-web
 4. Generate the project.
 
-###### Project Package structure
+##### Project Package structure
 
 ```
 com.kaveesh.testApp
@@ -44,7 +45,7 @@ com.kaveesh.testApp
 ├── util 
 └── TestApplication
 ```
-###### Pacakge Details
+##### Package Details
 
 1. configuration 
 - All classes in this package is annotated using @Configuration.
@@ -67,6 +68,7 @@ com.kaveesh.testApp
 
 5 . dto
 - All classes in this package is annotated using @Data and it will automatically create getters and setters to the variables defined in this class.
+- @Converter annotation is used to auto applying conversion based on the target attribute type.
 
 6 . event
 
@@ -97,3 +99,14 @@ com.kaveesh.testApp
 
 11 . Util
 - This package includes common implementations such as logging, validators. 
+
+#### Scopes in Spring Boot
+
+- **singleton** - _@Scope("singleton")_ -> Creates a single bean instance for all requests. This is the default scope.
+- **prototype** - _@Scope("prototype")_ ->  Creates different bean instance for each request requested from the container.
+- **request** - _@RequestScope_ -> Creates  different bean instance for each request in web application context.
+- **session** - _@SessionScope_ ->  Creates a single bean instance and it changes only in the first request.  for subsequent requests, same bean instance is returned for the entire session.
+- **application** - _@ApplicationScope_ -> Same bean instance is shared across multiple servlet-based applications running in the same ServletContext. While singleton-scoped beans are scoped to a single application context only.
+- **websocket** - _@Scope(scopeName = "websocket", proxyMode = ScopedProxyMode.TARGET_CLASS)_ -> When first accessed are stored in the WebSocket session attributes. The same bean instance  is returned to the entire WebSocket session. It exhibits singleton behavior but limited to a WebSocket session only.
+
+### Annotations used in the project
